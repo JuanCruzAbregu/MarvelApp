@@ -1,9 +1,6 @@
 package com.abregujuancruz.marvel.api
 
-import com.abregujuancruz.marvel.models.Comics
 import com.abregujuancruz.marvel.models.HeroResponse
-import com.abregujuancruz.marvel.models.Heroes
-import com.abregujuancruz.marvel.models.Items
 import com.abregujuancruz.marvel.utils.Constants
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -37,7 +34,7 @@ class APIService : MarvelAPI {
         ts: String,
         apikey: String,
         hash: String
-    ): Call<HeroResponse>{
+    ): Call<HeroResponse> {
         retrofit = getRetrofit()
         marvelAPI = retrofit.create(MarvelAPI::class.java)
         return marvelAPI.getHeroesById(id, ts, apikey, hash)

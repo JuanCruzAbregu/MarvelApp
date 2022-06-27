@@ -2,14 +2,11 @@ package com.abregujuancruz.marvel.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abregujuancruz.marvel.api.APIService
 import com.abregujuancruz.marvel.databinding.ActivityDetailsBinding
-import com.abregujuancruz.marvel.models.Comics
 import com.abregujuancruz.marvel.models.HeroResponse
-import com.abregujuancruz.marvel.models.Heroes
 import com.abregujuancruz.marvel.models.Items
 import com.abregujuancruz.marvel.utils.Constants
 import com.abregujuancruz.marvel.view.recyclerview.comics.ComicsAdapter
@@ -40,9 +37,9 @@ class DetailsActivity : AppCompatActivity() {
                 val hero = response.body()?.listData?.listHeroes ?: emptyList()
                 b.tvHeroTitle.text = hero[0].name
                 b.tvHeroDescription.text = hero[0].description
-                val url : String = hero[0].thumbnail.path + "." + hero[0].thumbnail.extension
+                val url: String = hero[0].thumbnail.path + "." + hero[0].thumbnail.extension
                 Picasso.get().load(url).into(b.ivHeroImg)
-                val listComics : List<Items> = hero[0].comics.items
+                val listComics: List<Items> = hero[0].comics.items
                 initRecyclerView(listComics)
             }
             

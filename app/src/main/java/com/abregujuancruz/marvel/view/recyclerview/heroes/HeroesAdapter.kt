@@ -27,12 +27,8 @@ class HeroesAdapter(private val listHeroes: List<Heroes>) :
         holder.bind(heroes.name, heroes.thumbnail)
         holder.b.constraint.setOnClickListener {
             val heroesId = heroes.id.toString()
-//            val heroesName = heroes.name
-//            val heroesDescription = heroes.description
             val intent = Intent(it.context, DetailsActivity::class.java)
             intent.putExtra(Constants.EXTRA_ID, heroesId)
-//            intent.putExtra(Constants.EXTRA_NAME, heroesName)
-//            intent.putExtra(Constants.EXTRA_DESCRIPTION, heroesDescription)
             it.context.startActivity(intent)
         }
     }

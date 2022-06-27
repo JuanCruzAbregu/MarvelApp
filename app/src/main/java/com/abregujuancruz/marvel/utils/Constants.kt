@@ -9,8 +9,6 @@ class Constants {
         const val TS = "1"
         const val LIMIT = "100"
         const val EXTRA_ID = "ID_HERO"
-        const val EXTRA_NAME = "NAME_HERO"
-        const val EXTRA_DESCRIPTION = "DESCRIPTION_HERO"
     }
     
 }
