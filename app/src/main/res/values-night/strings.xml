@@ -2,4 +2,5 @@
 <resources>
     <string name="hero_img">hero</string>
     <string name="comics">Comics</string>
+    <string name="heroes_list">Heroes List</string>
 </resources>

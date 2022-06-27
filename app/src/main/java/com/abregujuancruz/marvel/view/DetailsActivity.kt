@@ -1,8 +1,8 @@
 package com.abregujuancruz.marvel.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abregujuancruz.marvel.api.APIService
 import com.abregujuancruz.marvel.databinding.ActivityDetailsBinding
@@ -18,20 +18,23 @@ import retrofit2.Response
 class DetailsActivity : AppCompatActivity() {
     
     private lateinit var b: ActivityDetailsBinding
-    private lateinit var loader: APIService
-    
+    private lateinit var apiService : APIService
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         b = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(b.root)
         
-        loader = APIService()
-        
+        apiService = APIService()
+        getHeroById()
+    }
+    
+    private fun getHeroById() {
+
         val heroId = intent.getStringExtra(Constants.EXTRA_ID)
-        val call: Call<HeroResponse> = loader.getHeroesById(
+        val call: Call<HeroResponse> = apiService.getHeroesById(
             heroId!!.toInt(), Constants.TS, Constants.APIKEY, Constants.HASH
         )
-        
+    
         call.enqueue(object : Callback<HeroResponse> {
             override fun onResponse(call: Call<HeroResponse>, response: Response<HeroResponse>) {
                 val hero = response.body()?.listData?.listHeroes ?: emptyList()
@@ -42,15 +45,13 @@ class DetailsActivity : AppCompatActivity() {
                 val listComics: List<Items> = hero[0].comics.items
                 initRecyclerView(listComics)
             }
-            
+        
             override fun onFailure(call: Call<HeroResponse>, t: Throwable) {
                 Toast.makeText(this@DetailsActivity, "Something went wrong", Toast.LENGTH_SHORT)
                     .show()
             }
-            
+        
         })
-        
-        
     }
     
     private fun initRecyclerView(listItem: List<Items>) {
