@@ -11,7 +11,7 @@ import com.abregujuancruz.marvel.databinding.ActivityMainBinding
 import com.abregujuancruz.marvel.models.HeroResponse
 import com.abregujuancruz.marvel.models.Heroes
 import com.abregujuancruz.marvel.utils.Constants
-import com.abregujuancruz.marvel.view.recyclerview.HeroesAdapter
+import com.abregujuancruz.marvel.view.recyclerview.heroes.HeroesAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         val loader = APIService()
         
         val call: Call<HeroResponse> = loader.getListHeroes(
-            Constants.TS, Constants.APIKEY, Constants.HASH
+            Constants.TS, Constants.APIKEY, Constants.HASH, Constants.LIMIT
         )
         call.enqueue(object : Callback<HeroResponse> {
             override fun onResponse(call: Call<HeroResponse>, response: Response<HeroResponse>) {
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             }
             
             override fun onFailure(call: Call<HeroResponse>, t: Throwable) {
-                Toast.makeText(this@MainActivity, "Somethings gone wrong", Toast.LENGTH_SHORT)
+                Toast.makeText(this@MainActivity, "Something went wrong :(", Toast.LENGTH_SHORT)
                     .show()
                 b.progressbar.visibility = View.GONE
             }
