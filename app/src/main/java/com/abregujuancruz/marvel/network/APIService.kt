@@ -1,4 +1,4 @@
-package com.abregujuancruz.marvel.api
+package com.abregujuancruz.marvel.network
 
 import com.abregujuancruz.marvel.models.HeroResponse
 import com.abregujuancruz.marvel.utils.Constants

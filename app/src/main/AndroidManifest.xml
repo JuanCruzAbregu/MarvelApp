@@ -17,11 +17,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".view.DetailsActivity"
+            android:name="com.abregujuancruz.marvel.ui.view.DetailsActivity"
             android:exported="false"
             android:screenOrientation="sensorPortrait"/>
         <activity
-            android:name=".view.HeroesActivity"
+            android:name="com.abregujuancruz.marvel.ui.view.HeroesActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait">
             <intent-filter>

@@ -1,4 +1,4 @@
-package com.abregujuancruz.marvel.view.recyclerview.comics
+package com.abregujuancruz.marvel.ui.view.recyclerview.comics
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

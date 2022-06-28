@@ -1,4 +1,4 @@
-package com.abregujuancruz.marvel.view.recyclerview.heroes
+package com.abregujuancruz.marvel.ui.view.recyclerview.heroes
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

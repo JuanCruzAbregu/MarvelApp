@@ -1,4 +1,4 @@
-package com.abregujuancruz.marvel.view.recyclerview.heroes
+package com.abregujuancruz.marvel.ui.view.recyclerview.heroes
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abregujuancruz.marvel.R
 import com.abregujuancruz.marvel.models.Heroes
 import com.abregujuancruz.marvel.utils.Constants
-import com.abregujuancruz.marvel.view.DetailsActivity
+import com.abregujuancruz.marvel.ui.view.DetailsActivity
 
 class HeroesAdapter(private val listHeroes: List<Heroes>) :
     RecyclerView.Adapter<HeroesViewHolder>() {
