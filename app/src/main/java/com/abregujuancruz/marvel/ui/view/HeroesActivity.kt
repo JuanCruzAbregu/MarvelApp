@@ -12,28 +12,32 @@ import com.abregujuancruz.marvel.ui.viewmodel.HeroesViewModel
 
 class HeroesActivity : AppCompatActivity() {
     
-    private lateinit var b: ActivityHeroesBinding
-    private val  heroesViewModel: HeroesViewModel by viewModels()
+    private lateinit var binding: ActivityHeroesBinding
+    private val heroesViewModel: HeroesViewModel by viewModels()
     private lateinit var listHeroes: List<Heroes>
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        b = ActivityHeroesBinding.inflate(layoutInflater)
-        setContentView(b.root)
+        binding = ActivityHeroesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         
         heroesViewModel.getListOfHeroes()
         heroesViewModel.heroesData.observe(this) {
             listHeroes = it.listData.listHeroes
             initRecyclerView(listHeroes)
         }
-    
     }
     
     private fun initRecyclerView(listHeroes: List<Heroes>) {
-        val adapter = HeroesAdapter(listHeroes)
-        b.rvHeroes.adapter = adapter
-        val manager = LinearLayoutManager(this)
-        b.rvHeroes.layoutManager = manager
-        b.progressbar.visibility = View.GONE
+        binding.rvHeroes.adapter = HeroesAdapter(listHeroes)
+        binding.rvHeroes.layoutManager = LinearLayoutManager(this)
+        
+        heroesViewModel.controlVisibility()
+        heroesViewModel.visibility.observe(this) {
+            binding.rvHeroes.visibility = if(it) View.VISIBLE else View.GONE
+            binding.tvTitleList.visibility = if(it) View.VISIBLE else View.GONE
+            binding.shimmerLayout.visibility = if(it) View.GONE else View.VISIBLE
+        }
+        
     }
 }
